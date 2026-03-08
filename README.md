@@ -12,7 +12,6 @@ Triple-degree candidate at Meredith College pursuing Computer Science, Economics
 ## Projects
 - **Volunteer Event Registration System** — Full-stack PHP/MySQL web app with live countdown timer, real-time slot availability, and duplicate prevention
 - **FIFA Player Market Valuation** — Regression analysis in R predicting player market values (Adj. R² = 0.91) across 17,954 records
-- **Bank Account System** — Java OOP project implementing inheritance, polymorphism, and overdraft handling
 
 ## Built With
 - HTML / CSS
