@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aaliyah Powell — Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --ink: #1a1a18;
+      --muted: #6b6860;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0eb;
+      --line: #dddbd7;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(247,245,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 3rem 5rem;
+      border-bottom: 1px solid var(--line);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute; top: 50%; left: -1rem;
+      transform: translateY(-50%);
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      color: transparent;
+      -webkit-text-stroke: 1px var(--line);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.1s forwards;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.35rem 0.8rem; border-radius: 2px;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted); max-width: 520px;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards;
+    }
+    .hero-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease 0.9s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      padding: 0.65rem 1.4rem; border-radius: 3px;
+      letter-spacing: 0.03em; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--ink); color: var(--white); }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline { border: 1px solid var(--line); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 3rem; border-bottom: 1px solid var(--line); }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .section-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem; letter-spacing: -0.01em;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list { display: flex; flex-direction: column; }
+    .project-item {
+      display: grid; grid-template-columns: 3fr 1fr;
+      gap: 2rem; align-items: start;
+      padding: 2.5rem 0; border-bottom: 1px solid var(--line);
+    }
+    .project-item:first-child { padding-top: 0; }
+    .project-item:last-child { border-bottom: none; }
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem; margin-bottom: 0.5rem;
+    }
+    .project-bullets { margin-top: 0.6rem; padding-left: 1rem; }
+    .project-bullets li { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 0.2rem; }
+    .project-meta { text-align: right; display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end; }
+    .project-tech {
+      display: inline-block; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.05em; color: var(--accent);
+      background: var(--accent-light); padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .contact-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      max-width: 500px; line-height: 1.15;
+    }
+    .contact-heading em { font-style: italic; color: var(--accent); }
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; align-items: flex-end; }
+    .contact-link {
+      text-decoration: none; font-size: 0.9rem;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-name { font-family: 'DM Serif Display', serif; font-size: 0.95rem; }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3.5rem 1.5rem; }
+      .hero { padding: 0 1.5rem 3.5rem; }
+      .project-item { grid-template-columns: 1fr; }
+      .project-meta { text-align: left; align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+      .contact-inner { flex-direction: column; gap: 2rem; align-items: flex-start; }
+      .contact-links { align-items: flex-start; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Aaliyah Powell</span>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text">Projects</div>
+    <div class="hero-content">
+      <div class="hero-tag">CS · Economics · Data Analytics</div>
+      <h1>Aaliyah Powell<br/><em>Project Work</em></h1>
+      <p class="hero-sub">
+        A collection of my projects spanning full-stack web development, statistical analysis, regression modeling, and object-oriented programming.
+      </p>
+      <div class="hero-links">
+        <a href="#projects" class="btn btn-primary">See Projects</a>
+        <a href="https://github.com/aaaliyahp" target="_blank" class="btn btn-outline">GitHub ↗</a>
+        <a href="https://linkedin.com/in/aaaliyahp" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-list">
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-name">Volunteer Event Registration System</div>
+          <ul class="project-bullets">
+            <li>Designed a normalized 3NF MySQL database to manage volunteer sign-ups, enforce duplicate prevention, and display real-time slot availability across 5 shifts.</li>
+            <li>Built a full-stack web app in PHP with a live countdown timer in jQuery, server-side name validation via regex, and dynamic dropdowns that auto-disable fully booked time slots.</li>
+          </ul>
+        </div>
+        <div class="project-meta">
+          <span class="project-tech">PHP</span>
+          <span class="project-tech">SQL</span>
+          <span class="project-tech">JavaScript</span>
+          <span class="project-tech">jQuery</span>
+          <span class="project-tech">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-name">FIFA Player Market Valuation</div>
+          <ul class="project-bullets">
+            <li>Cleaned 17,954 player records; log-transformed skewed values and removed 16 collinear predictors.</li>
+            <li>Built a multiple regression model (Adj. R² = 0.91; RMSE ≈ €962K). Identified rating, age, finishing, and interceptions as the strongest value drivers.</li>
+          </ul>
+        </div>
+        <div class="project-meta">
+          <span class="project-tech">R</span>
+          <span class="project-tech">Regression Analysis</span>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-name">Gender Pay Gap Analysis</div>
+          <ul class="project-bullets">
+            <li>Constructed a derived total compensation variable combining base pay and bonus data from a Glassdoor dataset of 1,000+ employee records.</li>
+            <li>Analyzed pay disparities across gender, job title, seniority, and education level — finding men earned $104,919 on average vs. $96,417 for women.</li>
+            <li>Produced 6 visualizations (bar charts, box plots, mosaic plots) revealing that men dominate higher-paying roles like Software Engineer and Manager, while women are more concentrated in lower-paying titles.</li>
+            <li>Summarized findings in a written blog post communicating results to a general audience.</li>
+          </ul>
+        </div>
+        <div class="project-meta">
+          <span class="project-tech">JMP</span>
+          <span class="project-tech">Statistical Analysis</span>
+          <span class="project-tech">Data Storytelling</span>
+        </div>
+      </div>
+
+
+      <div class="project-item reveal">
+        <div>
+          <div class="project-name">Bank Account System</div>
+          <ul class="project-bullets">
+            <li>Built BankAccount, SavingsAccount, and CheckingAccount classes using OOP principles including inheritance and polymorphism.</li>
+            <li>Implemented deposits, withdrawals, monthly interest calculations, and overdraft protection handling.</li>
+          </ul>
+        </div>
+        <div class="project-meta">
+          <span class="project-tech">Java</span>
+          <span class="project-tech">OOP</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner reveal">
+      <h2 class="contact-heading">Let's connect<br/><em>& work together.</em></h2>
+      <div class="contact-links">
+        <a href="/cdn-cgi/l/email-protection#235a4c56514d424e4663464e424a4f0d404c4e" class="contact-link"><span class="__cf_email__" data-cfemail="e1988e94938f808c84a1848c80888dcf828e8c">[email&#160;protected]</span> ↗</a>
+        <a href="https://linkedin.com/in/aaaliyahp" target="_blank" class="contact-link">linkedin.com/in/aaaliyahp ↗</a>
+        <a href="https://github.com/aaaliyahp" target="_blank" class="contact-link">github.com/aaaliyahp ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Aaliyah Powell</span>
+    <span class="footer-copy">© 2025 · Built with HTML/CSS</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const observer = new IntersectionObserver
