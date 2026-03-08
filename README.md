@@ -7,14 +7,12 @@ My personal portfolio website, built with HTML and CSS.
 ---
 
 ## About Me
-Triple-degree candidate at Meredith College pursuing Computer Science, Economics, and Data Analytics (Minor: Finance). I work at the intersection of data and decision-making — from regression models to full-stack web apps.
+Triple-degree candidate at Meredith College pursuing Computer Science, Economics, and Data Analytics (Minor: Finance). I want to work at the intersection of data and decision-making — from regression models to full-stack web apps.
 
-## What's Inside
-- **About** — background, honors, and awards
-- **Skills** — languages, tools, and methods
-- **Projects** — data analysis, OOP, full-stack development
-- **Experience** — leadership and work history
-- **Education** — coursework and honors
+## Projects
+- **Volunteer Event Registration System** — Full-stack PHP/MySQL web app with live countdown timer, real-time slot availability, and duplicate prevention
+- **FIFA Player Market Valuation** — Regression analysis in R predicting player market values (Adj. R² = 0.91) across 17,954 records
+- **Bank Account System** — Java OOP project implementing inheritance, polymorphism, and overdraft handling
 
 ## Built With
 - HTML / CSS
